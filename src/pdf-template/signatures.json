@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "name": "John Doe",
+    "position": "College Secretary",
+    "signature_image": "sig.png"
+  },
+  {
+    "id": 2,
+    "name": "Jane Dou",
+    "position": "Associate Dean",
+    "signature_image": "sig2.png"
+  },
+  {
+    "id": 3,
+    "name": "Anon User",
+    "position": "Faculty",
+    "signature_image": "sig.png"
+  }
+]

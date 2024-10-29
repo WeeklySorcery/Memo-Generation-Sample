@@ -1,0 +1,73 @@
+@page {
+    size: A4 portrait !important;
+}
+
+.img-temp {
+    display: none;
+}
+
+.marginNegative {
+    margin-bottom: 20px;
+}
+
+.ul {
+    list-style: inside;
+    margin-left: 20px;
+}
+
+@media print {
+    .print-container {
+        /*This is for the whole container*/
+        color: #000000;
+        text-align: justify;
+        margin-left: 100px;
+        margin-right: 80px;
+    }
+
+    .img-temp {
+        display: block;
+        position: fixed;
+        margin: none;
+        z-index: -5;
+        left: 0;
+        top: 0;
+        width: 100%;
+        /* Set width to cover the entire viewport width */
+        height: 100%;
+        /* Set height to cover the entire viewport height */
+        object-fit: cover;
+        /* Remove any default margin */
+        padding: 0;
+        /* Remove any default padding */
+    }
+
+    .date {
+        margin-top: 210px;
+        text-align: left;
+        margin-bottom: 30px;
+    }
+
+    .bold {
+        font-weight: 600;
+    }
+
+    .undersigned {
+        margin-top: 16px;
+    }
+
+    .thanks {
+        margin-top: 12px;
+    }
+
+}
+
+.signature-container {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+}
+
+.signature-image {
+    margin-left: -35px;
+    margin-bottom: -15px;
+}
