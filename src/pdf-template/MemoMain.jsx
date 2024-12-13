@@ -122,9 +122,17 @@ const MemoMain = () => {
             : ""
         }`}
       >
-        <header className="font-bold ml-4 lg:text-2xl sm:text-xl">
+        <header className="font-bold ml-4 lg:text-2xl sm:text-xl text-center">
           Memorandum and Letter Generation
         </header>
+        <p className="mx-20 mt-5 bg-gray-800 p-4 rounded-md">
+          This sample component is part of our College Secretary Management
+          System project. It was developed to meet the CICT College Secretary's
+          need for a streamlined PDF generation tool. The feature simplifies the
+          creation of repetitive memorandums, allowing for dynamic customization
+          of key details such as names and dates while maintaining a consistent
+          message template.
+        </p>
       </div>
       <div className="memoMain grid sm:grid-cols-2 lg:grid-cols-2 min-h-screen gap-3">
         <div className="w-[80%] ml-6">
