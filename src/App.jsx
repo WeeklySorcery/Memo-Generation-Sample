@@ -3,7 +3,7 @@ import "./App.css";
 
 function App() {
   return (
-    <div className="bg-black text-white">
+    <div className="bg-gray-900 text-white">
       <MemoMain />
     </div>
   );
