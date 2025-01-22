@@ -18,6 +18,7 @@ const MemoMain = () => {
   const [allNames, setAllNames] = useState([]);
   const [signatureImage, setSignatureImage] = useState("");
   const [isSticky, setIsSticky] = useState(false);
+  const [shouldStick, setShouldStick] = useState(true);
 
   // State for the second signature
   const [selectedName2, setSelectedName2] = useState("");
@@ -77,6 +78,39 @@ const MemoMain = () => {
     };
   }, []);
 
+  useEffect(() => {
+    // Check screen height and enable/disable sticky behavior
+    const handleResize = () => {
+      setShouldStick(window.innerHeight > 600); // Disable sticky if the height is less than 600px
+    };
+
+    // Initial check and add event listener
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (shouldStick) {
+      const handleScroll = () => {
+        const divElement = document.querySelector(".headr");
+        const boundingBox = divElement.getBoundingClientRect();
+        setIsSticky(boundingBox.top <= 0);
+      };
+
+      window.addEventListener("scroll", handleScroll);
+
+      return () => {
+        window.removeEventListener("scroll", handleScroll);
+      };
+    } else {
+      setIsSticky(false); // Ensure it's not sticky when `shouldStick` is false
+    }
+  }, [shouldStick]);
+
   const renderInputs = () => {
     return templateData[template].inputs.map((input) => (
       <div key={input.name} className="mb-4">
@@ -116,9 +150,9 @@ const MemoMain = () => {
   return (
     <div>
       <div
-        className={`mt-2 px-4 py-4 justify-between items-center inset-0 sticky scroll-pt-4 z-10 headr ${
-          isSticky
-            ? "bg-white border-b-2 border-slate-300 dark:border-slate-300/10 dark:bg-slate-900"
+        className={`mt-2 px-4 py-4 justify-between items-center inset-0 ${
+          shouldStick && isSticky
+            ? "sticky scroll-pt-4 z-10 bg-white border-b-2 border-slate-300 dark:border-slate-300/10 dark:bg-slate-900"
             : ""
         }`}
       >
@@ -127,11 +161,11 @@ const MemoMain = () => {
         </header>
         <p className="mx-20 mt-5 bg-gray-800 p-4 rounded-md">
           This sample component is part of our College Secretary Management
-          System project. It was developed to meet the CICT College Secretary's
-          need for a streamlined PDF generation tool. The feature simplifies the
-          creation of repetitive memorandums, allowing for dynamic customization
-          of key details such as names and dates while maintaining a consistent
-          message template.
+          System project. It was developed to meet the CICT College
+          Secretary&apos;s need for a streamlined PDF generation tool. The
+          feature simplifies the creation of repetitive memorandums, allowing
+          for dynamic customization of key details such as names and dates while
+          maintaining a consistent message template.
         </p>
       </div>
       <div className="memoMain grid sm:grid-cols-2 lg:grid-cols-2 min-h-screen gap-3">
